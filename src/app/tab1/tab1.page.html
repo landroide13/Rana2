@@ -1,17 +1,49 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div class="" *ngIf="!activityList">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-card>
+      <ion-skeleton-text class="img" animated></ion-skeleton-text>
+      <ion-card-header>
+        <ion-card-title><ion-skeleton-text animated></ion-skeleton-text></ion-card-title>
+        <ion-card-title><ion-skeleton-text animated></ion-skeleton-text></ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-card>
+      <ion-skeleton-text class="img" animated></ion-skeleton-text>
+      <ion-card-header>
+        <ion-card-title><ion-skeleton-text animated></ion-skeleton-text></ion-card-title>
+        <ion-card-title><ion-skeleton-text animated></ion-skeleton-text></ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-card>
+      <ion-skeleton-text class="img" animated></ion-skeleton-text>
+      <ion-card-header>
+        <ion-card-title><ion-skeleton-text animated></ion-skeleton-text></ion-card-title>
+        <ion-card-title><ion-skeleton-text animated></ion-skeleton-text></ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+  </div>
+  
+  
+  <ion-card [routerLink]="['activity-detail', act.id]" button *ngFor="let act of (activityList | async)">
+    <ion-img [src]="act.cropped"></ion-img>
+    <ion-card-header>
+      <ion-card-title>{{ act.name }}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+ 
+
+
 </ion-content>
